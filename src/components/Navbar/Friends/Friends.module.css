@@ -1,0 +1,19 @@
+.friends_block{
+    padding-top: 50px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.title_friends{
+    font-size: 35px;
+    color:wheat;
+    text-align: center;
+    padding-bottom: 20px;
+    
+}
+
+.name_list{
+    display: flex;
+    justify-content: space-around;
+}

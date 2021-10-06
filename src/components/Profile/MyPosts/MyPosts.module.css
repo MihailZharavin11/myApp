@@ -1,0 +1,33 @@
+
+.main{
+    grid-area: c;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .posts{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .article{
+    font-size: 30px;
+    padding: 10px;
+  }
+  
+  .wrapperInput{
+    padding: 10px;
+    height: 70px;
+  }
+  
+  .input{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .button{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  

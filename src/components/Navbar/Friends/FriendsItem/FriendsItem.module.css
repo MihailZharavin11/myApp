@@ -1,0 +1,25 @@
+.friends__item{
+    display: flex;
+    align-items: center;
+}
+.name{
+    display: flex;
+    font-size: 25px;
+    color:white;
+    padding-left: 3px;
+}
+
+.name:hover{
+    color:black;
+}
+
+.user_imageWrapper{
+    border:1px solid black;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.image_users{
+    width: 30px;
+    height: 30px;
+}

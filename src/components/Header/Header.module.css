@@ -1,0 +1,14 @@
+
+.header{
+    grid-area: h;
+    background-color: #8cc8ff;
+    
+  }
+  
+  .logo{
+    padding-top: 25px;
+  }
+  
+  .picture{
+    width: 50px;
+  }
