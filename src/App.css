@@ -143,7 +143,6 @@ a:visited{
 
 .app-wrapper {
 	margin: 0 auto;
-	width: 1200px;
 	display: grid;
 	grid-template-areas:
 		'h h'
