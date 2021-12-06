@@ -14,6 +14,6 @@ let mapDispatchToProps = (dispatch) =>{
     };
 };
 
-const FriendsContainer = connect(mapStateToProps,mapDispatchToProps)(Friends)
+const FriendsContainer = connect(mapStateToProps,mapDispatchToProps)(Friends);
 
 export default FriendsContainer;

@@ -1,4 +1,4 @@
-const UPPDATE_NEW_DIALOG_TEXT = 'UPPDATE-NEW-DIALOG-TEXT';
+
  const MESSAGE_CREATE = 'MESSAGE-CREATE';
 
  let initialState = {
@@ -31,36 +31,24 @@ const UPPDATE_NEW_DIALOG_TEXT = 'UPPDATE-NEW-DIALOG-TEXT';
     }, {
         id: 4,
         message: 'Hey!'
-    }],
-    newDialogsText: ''
+    }]
 };
 const dialogsReducer = (state = initialState, action) =>{
     switch(action.type){
-        case UPPDATE_NEW_DIALOG_TEXT:
-           return {
-                ...state,
-                newDialogsText: action.text
-            };
         case MESSAGE_CREATE: 
             return {
                 ...state,
-                newDialogsText: '',
-                messagesData: [...state.messagesData,{id:5,message:state.newDialogsText}]
+                messagesData: [...state.messagesData,{id:5,message:action.message}]
             };
         default: return state;
     }
 };
 
-export const changesDialogActionCreator = (textChanges) => {
-    return {
-        type:UPPDATE_NEW_DIALOG_TEXT,
-        text: textChanges
-    };
-};
 
-export const addMessageActionCreator = () =>{
+export const addMessage = (message) =>{
     return {
-        type:MESSAGE_CREATE
+        type:MESSAGE_CREATE,
+        message
     };
 };
 

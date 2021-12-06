@@ -5,14 +5,13 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
  
 
 
-const Profile = ()=>{
+const Profile = (props)=>{
     return(
       <main>
-      <div className = {style.logo}>
-      </div>
-      <ProfileInfo/>
-      <MyPostsContainer/>
-   </main>
+        <ProfileInfo profile = {props.profile} status = {props.status} getUserStatus ={props.getUserStatus} 
+         updateUserStatus = {props.updateUserStatus} />
+        <MyPostsContainer/>
+      </main>
     );
 }
 

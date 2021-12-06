@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import DialogInputReduxForm from './DialogInput/DialogInput';
 
 
 
@@ -10,13 +11,8 @@ const Dialog = (props) =>{
     let usersElement = props.userData.map((el) => <DialogItem key = {el.id} image ={el.image} id={el.id} name = {el.name}/>);
     let messageElement = props.messagesData.map((el) => <Message key ={el.id} mess ={el.message}/>);
 
-    let changes = (e) =>{
-       let textChanges = e.target.value;
-       props.changesDialogText(textChanges);
-    };
-
-    let addMessage =() =>{
-        props.addDialogText();
+    let onSubmit = (formData) =>{
+        props.addMessage(formData.message);
     };
 
     return (
@@ -32,12 +28,7 @@ const Dialog = (props) =>{
                         {messageElement}
                 </div>
             </div>
-            <div className = {style.dialogsInput}>
-            <input className = {style.input} type="text" value ={props.newDialogsText} onChange = { changes}></input>
-            </div>
-            <div className = {style.buttonElement}>
-                <button onClick ={addMessage}>Отправить</button>
-            </div>
+            <DialogInputReduxForm onSubmit = {onSubmit}/>
         </div>
     );
 }

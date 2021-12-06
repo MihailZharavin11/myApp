@@ -1,19 +1,29 @@
 import React from 'react';
 import style from './../Users.module.css';
+import userPhoto from '../../../assets/img/userPhoto.png';
+import { NavLink } from 'react-router-dom';
+import { userAPI } from '../../../API/api';
 
 const UserItem = (props) => {
-
-
     return (
         <div className={style.userWrapper}>
             <div className = {style.pictureButton}>
                 <div className= {style.picture}>
-                    <img src={props.image} alt="ava" />
+                    <NavLink to = {'profile/'+ props.id}>
+                        <img className ={style.pictureUsers} src={props.photos.small != null ? props.photos.small : userPhoto } alt="ava" />
+                    </NavLink>
                 </div>
                 <div className={style.button}>
                     {props.followed?
-                    <button className={style.unFoll} onClick={()=>{props.unFollowedUsers(props.id);}}>Unfollowed</button>:
-                    <button className={style.foll} onClick={()=>{props.followedUsers(props.id);}}>Followed</button>}
+                    <button disabled = {props.followingInProgress.some(id => id === props.id)} 
+                            className={style.unFoll} onClick={()=>{
+                                props.unFollowedUsers(props.id);
+                             }
+                    }>Unfollowed</button>:
+                    <button disabled = {props.followingInProgress.some(id=>id===props.id)} 
+                    className={style.foll} onClick={()=>{
+                        props.followedUsers(props.id);
+                    }}>Followed</button>}
                 </div>
             </div>
             <div className = {style.description}>
@@ -25,14 +35,14 @@ const UserItem = (props) => {
                         {props.status}
                     </div>
                 </div>
-                <div className = {style.countryCity}>
+                {/* <div className = {style.countryCity}>
                     <div className={style.country}>
                         {props.country}
                     </div>
                     <div className ={style.city}>
                         {props.city}
                     </div>
-                </div>
+                </div> */}
             </div>
 
         </div>

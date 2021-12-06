@@ -2,6 +2,8 @@
 .header{
     grid-area: h;
     background-color: #8cc8ff;
+    display: flex;
+    justify-content: space-between;
     
   }
   
@@ -11,4 +13,39 @@
   
   .picture{
     width: 50px;
+  }
+
+  .logIn{
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+  }
+
+  .logIn a{
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+  }
+
+  .logIn a:hover{
+    color:white;
+  }
+
+  .authBlock{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .butonLogOut{
+    padding-top: 10px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor:pointer;
+  }
+
+  .butonLogOut:hover{
+    color:white;
   }

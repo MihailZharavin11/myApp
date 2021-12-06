@@ -1,0 +1,18 @@
+input{
+    outline: none;
+}
+
+.inputError input{
+    border:1px solid red;
+}
+
+.errorMessage{
+    color:red;
+    font-size: 20px;
+}
+
+.incorrectErrorMessage{
+    color:red;
+    font-size: 20px;
+    padding: 10px;
+}
