@@ -4,8 +4,8 @@ import Profile from "./Profile";
 import {showUser} from "../../Redux/profileReducer";
 import { getUserStatus,updateUserStatus } from "../../Redux/profileReducer";
 import { withRouter } from "react-router";
-import withAuthRedirect from '../HOC/withAuthRedirect';
 import {compose} from 'redux';
+import withAuthRedirect from "../HOC/withAuthRedirect";
 
 class ProfileContainer extends React.Component{
 
@@ -20,6 +20,8 @@ class ProfileContainer extends React.Component{
         this.props.getUserStatus(userId);
         this.props.showUser(userId);
     }
+
+    
 
     render(){
         return (

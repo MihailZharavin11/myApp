@@ -2,7 +2,6 @@ import React from 'react';
 import style from './../Users.module.css';
 import userPhoto from '../../../assets/img/userPhoto.png';
 import { NavLink } from 'react-router-dom';
-import { userAPI } from '../../../API/api';
 
 const UserItem = (props) => {
     return (
@@ -35,14 +34,6 @@ const UserItem = (props) => {
                         {props.status}
                     </div>
                 </div>
-                {/* <div className = {style.countryCity}>
-                    <div className={style.country}>
-                        {props.country}
-                    </div>
-                    <div className ={style.city}>
-                        {props.city}
-                    </div>
-                </div> */}
             </div>
 
         </div>

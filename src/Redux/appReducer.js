@@ -1,6 +1,6 @@
 import { authUsers } from "./authReducer";
 
-const SET_INICIALIZATION = 'SET_INICIALIZATION';
+const SET_INICIALIZATION = 'appReducer/SET_INICIALIZATION';
 
 const initialState = {
     initialization : false
@@ -25,7 +25,12 @@ export const inicializationSuccess = () =>{
 };
 
 export const inizializeApp = () =>{
-    return (dispatch) =>{
+    return async (dispatch) =>{
+        // let response = dispatch(await authUsers());
+        // if(response){
+        //     dispatch(inicializationSuccess());
+        // }
+        
         dispatch(authUsers()).then( () =>{
             dispatch(inicializationSuccess());
         });

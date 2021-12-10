@@ -1,5 +1,6 @@
 
- const MESSAGE_CREATE = 'MESSAGE-CREATE';
+ const MESSAGE_CREATE = 'dialogsPage/MESSAGE-CREATE';
+ const CHANGE_MESSAGE = 'dialogsPage/CHANGE_MESSAGE';
 
  let initialState = {
     userData: [{
@@ -40,6 +41,16 @@ const dialogsReducer = (state = initialState, action) =>{
                 ...state,
                 messagesData: [...state.messagesData,{id:5,message:action.message}]
             };
+        case CHANGE_MESSAGE:
+            return{
+                ...state,
+                messagesData: state.messagesData.filter((element) => {
+                    if(element.id == action.id){
+                       return element.message = action.message;
+                    }
+                    return element;
+                })
+            };
         default: return state;
     }
 };
@@ -48,6 +59,14 @@ const dialogsReducer = (state = initialState, action) =>{
 export const addMessage = (message) =>{
     return {
         type:MESSAGE_CREATE,
+        message
+    };
+};
+
+export const changeMessage=(id,message) =>{
+    return{
+        type:CHANGE_MESSAGE,
+        id,
         message
     };
 };

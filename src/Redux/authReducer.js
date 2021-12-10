@@ -2,7 +2,7 @@ import { stopSubmit } from "redux-form";
 import { authAPI } from "../API/api";
 
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'auth/SET_USER_DATA';
 
 let initialState = {
     userId:null,
@@ -40,37 +40,35 @@ export const setUserData = (userId,email,login,isAuth) =>{
 
 
 export const authUsers = () =>{
-    return (dispatch) =>{
-       return authAPI.setUserAuth().then(data =>{
-            if(data.resultCode===0){
-                dispatch(setUserData(data.data.id,data.data.email,data.data.login,true));
+    return async (dispatch) =>{
+        let response = await authAPI.setUserAuth();
+            if(response.resultCode===0){
+                dispatch(setUserData(response.data.id,response.data.email,response.data.login,true));
             }
-        });
     };
 };
 
 export const loginUser = (email,password,rememberMe=false) =>{
-    return (dispatch) =>{
-        authAPI.loginUser(email,password,rememberMe).then(data =>{
-            if(data.resultCode === 0){
-                dispatch(authUsers());
-            }else{
-                let errorMessage = data.messages.length > 0 ? data.messages[0] : "Some error";
-                dispatch(stopSubmit('login',{
-                    _error:errorMessage
-                }));
-            }
-        });
+    return async (dispatch) =>{
+        let response = await authAPI.loginUser(email,password,rememberMe);
+        if(response.resultCode === 0){
+            dispatch(authUsers());
+        }else{
+            let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit('login',{
+                _error:errorMessage
+            }));
+        }
     };
 };
 
 export const logOutUser = () =>{
-    return (dispatch) =>{
-        authAPI.logOutUser().then( response =>{
-            if(response.data.resultCode ===0){
-                dispatch(setUserData(null,null,null,false));
-            }
-        });
+    return async (dispatch) =>{
+        let response = await authAPI.logOutUser();
+        debugger;
+        if(response.data.resultCode ===0){
+            dispatch(setUserData(null,null,null,false));
+        }
     };
 };
 

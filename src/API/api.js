@@ -18,13 +18,13 @@ export const userAPI = {
 
     postFollow(id) {
         return instanceAPI.post(`follow/${id}`, null).then(response => {
-
+            return response.data;
         });
     },
 
     deleteFollow(id) {
         return instanceAPI.delete(`follow/${id}`).then(response => {
-
+            return response.data;
         });
     },
 

@@ -10,9 +10,9 @@ import style from '../Common/FormControls/TextAreaForms.module.css';
 
 const lengthValidate = maxLengthCreator(40);
 
-let LoginForm = (props) =>{
+let LoginForm = ({handleSubmit,error}) =>{
     return (
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <Field placeholder={'Login'} name='login' validate={[requiredField,lengthValidate]} component={TextForms}/>
                 </div>
@@ -26,7 +26,7 @@ let LoginForm = (props) =>{
                     <button>LogIn</button>
                 </div>
                 <div className = {style.incorrectErrorMessage}>
-                    {props.error ? props.error:null}
+                    {error ? error:null}
                 </div>
             </form>
     )
@@ -39,13 +39,13 @@ const LoginReduxForm = reduxForm({
 
 
 
-let Login = (props) =>{
+let Login = ({loginUser,isAuth}) =>{
     
     const onSubmit = (formData) =>{
-        props.loginUser(formData.login,formData.password,formData.rememberMe);
+        loginUser(formData.login,formData.password,formData.rememberMe);
     };
 
-    if(props.isAuth){
+    if(isAuth){
         return <Redirect to='/profile'/>
     }
 
