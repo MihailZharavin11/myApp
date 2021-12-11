@@ -37,12 +37,13 @@ class ProfileStatus extends React.Component{
 
 
     render(){
+        debugger;
         return (
             <div>
                 {
                 this.state.editMode?
                 <div><input onChange= {this.onStatusChange} autoFocus ={true} onBlur = {this.deActivatedEditMode} type="text" value={this.state.status} /></div>:
-                <div onDoubleClick = {this.activatedEditMode}> {this.props.status||'----'}</div>
+                <span className ='status' onDoubleClick = {this.activatedEditMode}> {this.props.status||'----'}</span>
                 }
             </div>
         );
