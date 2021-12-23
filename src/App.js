@@ -3,17 +3,14 @@ import './App.css';
 import Nav from './components/Navbar/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogContainer from './components/Dialogs/DialogContainer';
-import {Route} from 'react-router-dom';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
+import {Route,Routes} from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import {inizializeApp} from "./Redux/appReducer";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withRouter } from "react-router";
+// import { withRouter } from "react-router";
 import Preloader from './components/Common/Preloader';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -28,18 +25,19 @@ class App extends React.Component{
 
   render(){
       if(this.props.initialization){
-        return (
-          <div className = 'app-wrapper'>
+        return ( 
+        <div className = 'app-wrapper'>
               <HeaderContainer/>
               <Nav/>
                 <div className = 'app-wrapper-content'>
-                  <Route path='/dialogs' render ={()=><DialogContainer /> } />
-                  <Route path='/profile/:userId?' render = {()=><ProfileContainer/> } />
-                  <Route path = '/news' render = {()=> <News/> }/>
-                  <Route path = '/music' component = {Music}/>
-                  <Route path = '/settings' component = {Settings}/>
-                  <Route path = '/users' render = {()=><UsersContainer/>} />
-                  <Route path = '/login' render ={()=><Login/>} />
+                  <Routes>
+                      <Route path = '/' element ={<ProfileContainer/>} />
+                      <Route path = 'profile/:userId' element={<ProfileContainer/>} />
+                      <Route path = 'profile' element={<ProfileContainer/>} />
+                      <Route path = 'dialogs' element = {<DialogContainer/>} />
+                      <Route path = '/Users' element = {<UsersContainer/>}/>
+                      <Route path = '/login' element = {<Login/>}/>                        
+                  </Routes>
                 </div>
             </div>
         );
@@ -58,7 +56,6 @@ class App extends React.Component{
 
 
 let AppContainer =  compose(
-  withRouter,
   connect(mapStateToProps,{inizializeApp}))(App);
 
 const MainApp = (props) => {

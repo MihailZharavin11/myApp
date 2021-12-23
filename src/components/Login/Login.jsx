@@ -5,7 +5,7 @@ import {compose} from 'redux';
 import {loginUser} from '../../Redux/authReducer';
 import { TextForms } from '../Common/FormControls/TextAreaForms';
 import {requiredField,maxLengthCreator} from '../../Utils/Validators/validators';
-import { Redirect } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import style from '../Common/FormControls/TextAreaForms.module.css';
 
 const lengthValidate = maxLengthCreator(40);
@@ -44,9 +44,11 @@ let Login = ({loginUser,isAuth}) =>{
     const onSubmit = (formData) =>{
         loginUser(formData.login,formData.password,formData.rememberMe);
     };
+    
+    let navigate = useNavigate();
 
     if(isAuth){
-        return <Redirect to='/profile'/>
+          navigate('/profile');
     }
 
     return (

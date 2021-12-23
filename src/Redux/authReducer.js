@@ -54,7 +54,7 @@ export const loginUser = (email,password,rememberMe=false) =>{
         if(response.resultCode === 0){
             dispatch(authUsers());
         }else{
-            let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            let errorMessage = response.messages.length > 0 ? response.messages[0] : "Some error";
             dispatch(stopSubmit('login',{
                 _error:errorMessage
             }));
@@ -65,7 +65,6 @@ export const loginUser = (email,password,rememberMe=false) =>{
 export const logOutUser = () =>{
     return async (dispatch) =>{
         let response = await authAPI.logOutUser();
-        debugger;
         if(response.data.resultCode ===0){
             dispatch(setUserData(null,null,null,false));
         }

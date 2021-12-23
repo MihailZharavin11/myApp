@@ -8,7 +8,7 @@ const UserItem = (props) => {
         <div className={style.userWrapper}>
             <div className = {style.pictureButton}>
                 <div className= {style.picture}>
-                    <NavLink to = {'profile/'+ props.id}>
+                    <NavLink to = {'/profile/'+ props.id}>
                         <img className ={style.pictureUsers} src={props.photos.small != null ? props.photos.small : userPhoto } alt="ava" />
                     </NavLink>
                 </div>
